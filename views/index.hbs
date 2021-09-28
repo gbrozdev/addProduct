@@ -1,0 +1,122 @@
+<div style="position: fixed; z-index: 1; display: flex; background-color: #161a2b; height:60px; width:100%;" >
+<h2 class="head">Add Products</h2> 
+<a href="/delete" class="btn btn-danger" style="margin: 10px; " > D </a>
+<a href="/list" class="btn btn-danger" style="margin:10px;" > L </a>
+</div>
+
+<div class="container" style="margin-top: 60px;">
+{{#if err}}
+<h1>nothing here...add something</h1>
+{{/if}}
+    
+{{#each products}}
+<div class="row">
+
+        <div class="box">{{this.name}}</div>
+        <a href="/delete/{{this._id}}" class="btn btn-success m-3 " >del</a>
+        <a href="/add/{{this._id}}" class="btn btn-success m-3 " >+</a>
+</div>
+{{/each}}
+
+    <button href="/new" class="plus" onclick="document.getElementById('id01').style.display='block'" >+</button>
+</div>
+
+
+<div id="id01" class="modal">
+    <form action="/submit" method="post">
+        <label>Add new Product</label>
+        <input type="text" name="name">
+
+        <button type="submit" class="btn btn-success">submit</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger">Cancel</button>
+    </form>
+</div>
+
+<style>
+    .modal {
+        width: 250px;
+        height: 150px;
+        border-radius: 1rem;
+        margin: 30px;
+        align-items: center;
+        position: absolute;
+        right: 20%;
+        top: 30%;
+        left: 20%;
+        bottom: 30%;
+        background-color: whitesmoke;
+        padding: 30px;
+    }
+    input{
+        margin: 10px;
+    }
+    label{
+        color: black;
+    }
+
+</style>
+
+
+
+
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        border-radius: 1rem;
+        width: 300px;
+        height: 40px;
+        margin: 10px;
+        margin-top: 20px;
+    }
+
+    .plus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        border-radius: 100px;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        cursor: pointer;
+        position: fixed;
+    }
+</style>

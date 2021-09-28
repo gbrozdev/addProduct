@@ -1,0 +1,29 @@
+<a href="/deletecart" class="btn btn-danger" style="position: absolfixedute; right: 30px; " > D </a>
+{{#if err}}
+<h1>nothing in cart...add something</h1>
+{{/if}}
+
+{{#each lists}}
+<div class="row">
+
+        <div class="box">{{this.name}}</div>
+        <a href="/deletecart/{{this._id}}" class="btn btn-success m-3 " >del</a>
+</div>
+
+{{/each}}
+
+
+<style>
+        .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        border-radius: 1rem;
+        width: 300px;
+        height: 40px;
+        margin: 10px;
+        margin-top: 20px;
+    }
+
+</style>
